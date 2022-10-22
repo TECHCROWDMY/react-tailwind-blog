@@ -42,15 +42,17 @@ const Blog = ({blog}) => {
               
               
               {blog? blog.map((blog)=>
-              
-              <div className='bg-white rounded-xl overflow-hidden drop-shadow-md'>
-                <img className='h-56 w-full object-cover' src={`http://localhost:1337${blog.attributes.coverImg.data.attributes.url}`} />
-                <div className='p-8'>
-                  <h3 className='font-bold text-2xl my-1'>{blog.attributes.title}</h3>
-                  <p className='text-gray-600 text-xl'>{blog.attributes.short_desc}</p>
+               <Link  to={`/${blog.id}`}>
+
+                <div className='bg-white rounded-xl overflow-hidden drop-shadow-md'>
+                  <img className='h-56 w-full object-cover' src={`http://localhost:1337${blog.attributes.coverImg.data.attributes.url}`} />
+                  <div className='p-8'>
+                    <h3 className='font-bold text-2xl my-1'>{blog.attributes.title}</h3>
+                    <p className='text-gray-600 text-xl'>{blog.attributes.short_desc}</p>
+                  </div>
+                  
                 </div>
-                
-              </div>
+              </Link>
               
               
               ):

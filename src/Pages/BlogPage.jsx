@@ -1,10 +1,13 @@
 import React from 'react';
 import { Navbar, Footer, BlogContent } from '../Components';
 import { useParams } from 'react-router-dom';
-
+import useFetch from '../hooks/useFetch';
 
 const BlogPage = () => {
   const {id} = useParams()
+  let  {loading, error, data} = useFetch('http://localhost:1337/api/blogs?populate=*')
+  if(loading) return <p>Loading...</p>
+  if(error) { data = false}
   
   const blog1=[
     {   'id':'1',
@@ -38,7 +41,7 @@ const BlogPage = () => {
   return (
     <>
       <Navbar />
-      <BlogContent blogId={id} blog1={blog1}/>
+      <BlogContent blogId={id} blogsDummy={blog1} blogs={data?data:false} />
       <Footer />
     </>  
   )
